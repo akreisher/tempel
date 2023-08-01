@@ -230,7 +230,7 @@ BEG and END are the boundaries of the modification."
       (cond
        ;; Erase default before modification if at beginning or end
        ((and (not after) (overlay-get ov 'tempel--default)
-             (or (= beg (overlay-start ov)) (= end (overlay-end ov))))
+             (xor (= beg (overlay-start ov)) (= end (overlay-end ov))))
         (delete-region (overlay-start ov) (overlay-end ov)))
        ;; Update field after modification
        (after
